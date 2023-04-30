@@ -1,7 +1,28 @@
-import React from 'react'
-import "./Style.css"
-export default function Spinner() {
+import React from "react";
+import "./Style.css";
+
+export default function Spinner({ LodingState }) {
   return (
-    <div className="loader container my-5 "></div>
-  )
+    LodingState && (
+      <div className="spiner" id="spiner-8">
+        <div className="lds-roller">
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  );
 }

@@ -12,22 +12,22 @@ export default function NavBar() {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/business">business</Link>
+                            <Link className="nav-link active" aria-current="page" to="/business">Business</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/entertainment">entertainment</Link>
+                            <Link className="nav-link active" aria-current="page" to="/entertainment">Entertainment</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/health">health</Link>
+                            <Link className="nav-link active" aria-current="page" to="/health">Health</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/science">science</Link>
+                            <Link className="nav-link active" aria-current="page" to="/science">Science</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/sports">sports</Link>
+                            <Link className="nav-link active" aria-current="page" to="/sports">Sports</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/technology">technology</Link>
+                            <Link className="nav-link active" aria-current="page" to="/technology">Technology</Link>
                         </li>
                     </ul>
                     {/* <span className="navbar-text">I am Aman</span> */}

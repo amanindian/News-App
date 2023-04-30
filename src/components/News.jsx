@@ -3,14 +3,16 @@ import NewsCard from "./NewsCard";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "./Spinner";
 
-export default function News({ category, country }) {
+const News = ({ category, country }) => {
   const [NewsArticles, setNewsArticles] = useState([]);
   const [totalResults, settotalResults] = useState(0);
   const [pageNo, setpageNo] = useState(1);
+  const [LodingState, setLodingState] = useState(null);
 
   const loadData = async () => {
     // let Key = "4511ced488bd4c16a8fbd24119ca5ad2";
-    let Key = "4511ced488bd4c16a8fbd24119ca5ad2";
+    let Key = "d2f8411d3b7642cda1d1bb13187d854d";
+    // let Key = "4511ced488bd4c16a8fbd24119ca5ad2";
     let URL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=${5}&page=${pageNo}&apiKey=${Key}`;
     let NewsData = await fetch(URL);
     NewsData = await NewsData.json();
@@ -22,29 +24,33 @@ export default function News({ category, country }) {
     loadData();
     // eslint-disable-next-line
   }, []);
-
+  
   const fetchMoreData = async () => {
+    setLodingState(" ");
     setpageNo(pageNo + 1);
-    let Key = "4511ced488bd4c16a8fbd24119ca5ad2";
-    let URL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=${5}&page=${pageNo + 1}&apiKey=${Key}`;
+    let Key = "d2f8411d3b7642cda1d1bb13187d854d";
+    // let Key = "4511ced488bd4c16a8fbd24119ca5ad2";
+    let URL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&pageSize=${5}&page=${pageNo + 1
+      }&apiKey=${Key}`;
     let NewsData = await fetch(URL);
     NewsData = await NewsData.json();
     setNewsArticles(NewsArticles.concat(NewsData.articles));
+    setLodingState(null);
   };
   return (
     <div className="container">
-      <h1 className="text-center mt-5">Top {category.charAt(0).toUpperCase() + category.slice(1)} HeadLines</h1>
+      <h1 className="text-center mt-5">
+        Top {category.charAt(0).toUpperCase() + category.slice(1)} HeadLines
+      </h1>
       <InfiniteScroll
         dataLength={NewsArticles.length}
         next={fetchMoreData}
         hasMore={NewsArticles.length !== totalResults}
-        loader={
-        <Spinner/>
-        }
-        endMessage="No More News"
+        loader={<Spinner LodingState={LodingState} />}
+        endMessage="No More News in this section"
       >
         <div className="container">
-          <div className="row ">
+          <div className="row justify-content-around">
             {NewsArticles.map((Item, Index) => {
               return (
                 <NewsCard
@@ -64,3 +70,6 @@ export default function News({ category, country }) {
     </div>
   );
 }
+
+
+export default News;
